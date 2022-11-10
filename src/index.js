@@ -1,18 +1,50 @@
-// 1) import Reract and ReactDOM libraries
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "../src/index.css";
+import { faker } from "@faker-js/faker";
+import { Comment, ApprovalCard } from "./components";
 
-// 2) Get a reference to the div with ID root
-const el = document.getElementById("root");
+const App = () => {
+  return (
+    <div>
+      <ApprovalCard>
+        <div>
+          <h4>Warning!</h4>
+          Are you sure you want to do this?
+        </div>
+      </ApprovalCard>
+      <ApprovalCard>
+        <Comment
+          avatar={faker.image.avatar()}
+          author="Sam"
+          content="Great blog!"
+          date="Today at 6:00PM"
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <Comment
+          avatar={faker.image.avatar()}
+          author="John"
+          content="I like the subject!"
+          date="Today at 6:00PM"
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <Comment
+          avatar={faker.image.avatar()}
+          author="Andy"
+          content="I like the writing!"
+          date="Today at 6:00PM"
+        />
+      </ApprovalCard>
+    </div>
+  );
+};
 
-// 3) Tell React to take control of that element
-const root = ReactDOM.createRoot(el);
+const root = ReactDOM.createRoot(document.querySelector("#root"));
 
-// 4) Create a component
-
-function App() {
-  return <h1>hi there</h1>;
-}
-
-// Show the component on the screen
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
